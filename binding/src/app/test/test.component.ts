@@ -6,27 +6,26 @@ import { Component, OnInit } from '@angular/core';
             <h2>
                 Welcome {{name}}
             </h2>
-            <button (click)="onClick($event)" >Greet</button>
-            {{greeting}}
-
-            <button (click) = "greeting = 'Welcome Wesley'">Greet</button>
-            `,
+            <input #myInput type = "text">
+           <button (click)="logMessage(myInput.value)">Log</button>
+          <h2> This is passing the entire reference variable</h2>
+           <button (click)="logMessage(myInput)">Log</button>
+           `,
   styles: []
 })
 export class TestComponent implements OnInit {
 
   public name = "Wesley";
-  public greeting = "";
 
   constructor() { }
 
   ngOnInit() {
   }
 
-  onClick(event) {
-    console.log(event);
-    this.greeting = event.ctrlKey;
+  logMessage(value) {
+    console.log(value);
   }
+
 }
 
 
@@ -36,5 +35,5 @@ export class TestComponent implements OnInit {
 
 
 
-// event binding lets us capture a dom event and perform any action.
-// by using $ event u can get all of the DOM event properties!
+// Template Reference variables. Add into the opentag #variableName
+// 
