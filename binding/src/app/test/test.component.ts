@@ -5,36 +5,25 @@ import { Component, OnInit } from '@angular/core';
   template: `
             <h2>
                 Welcome {{name}}
-            </h2>
-            <h2 class ="text-success">Codevolution</h2>
-            <h2 [class]="successClass">Codevolution</h2>
-            
-            <h2 [class] ="specialClass" [class]="successClass">Codevolution</h2>
-            <!-- This is if i want it to be conditional baby  --> 
-            <h2 [class.text-danger]= "hasError"> Codevolution </h2>
-            
-            <h2 [ngClass]= "messageClasses"> Codevolution </h2>
+            <h2 [style.color]= "hasError ? 'red' : 'green'"> Style Binding </h2>
+            <h2 [style.color]= "highlightColor">  Style Binding 2</h2>
+            <h2 [ngStyle]= "titleStyles"> Style Binding 3 </h2>
             `,
   styles: [`
-  
-    .text-success{
-      color: green;
-    }
-    .text-danger{
-      color:red;
-    }
-    .text-special{
-      font-style: italic;
-    }
 
   `]
 })
 export class TestComponent implements OnInit {
 
-  public hasError = true;
+  public highlightColor = "orange";
+  public hasError = false;
   public successClass = "text-success";
   public name = "Wesawoo";
   public isSpecial = true;
+  public titleStyles = {
+    color: "blue",
+    fontStyle: "italic"
+  }
   public messageClasses ={
     "text-success": !this.hasError,
     "text-danger": this.hasError,
