@@ -2,43 +2,56 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-test',
+  // why doesnt ngIf need interpolations {{}} I'll read on this...
   template: `
+       <!--   <h2 *ngIf="displayName; else elseBlock">
+            Wesley Studys
+          </h2>
 
-          <input [(ngModel)]="name" type ="text">
-          {{name}}
+          <ng-template #elseBlock>
+          <h2 >
+            Name is hidden
+          </h2>
+          </ng-template>
+
+
+          <button (click) = "displayName = !displayName">
+          poop
+          </button>
+        -->
+
+        <div *ngIf="displayName; then thenBlock; else elseBlock"></div>
+
+
+        <ng-template #thenBlock>
+          <h2> Wesley </h2>
+        </ng-template>
+
+
+        <ng-template #elseBlock>
+          <h2>Hidden</h2>
+        </ng-template>
 
            `,
   styles: []
 })
 export class TestComponent implements OnInit {
 
-  public name = "";
+ public displayName = true;
 
   constructor() { }
 
   ngOnInit() {
   }
-
-  logMessage(value) {
-    console.log(value);
-  }
-
 }
 
 
 
 
 
+// Structural Direvtives
+// Let you add or remove html elements from the DOM
+// ngIF < conditionally render html elements
+// ngSwitch <- conditionally
 
-
-
-// [] is property binding. data flow from class to template
-// () for event binding data flowfrom template to the clasee
-//this is two way binding
-// ngModel uses two way binding, and it needs to be imported in app module ts
-
-// From the input the data flows to the class proprety and from the class property flows back to the
-//template...
-
-// import { FormsModule } from '@angular/forms';
-// add to imports array too.. FormsModule
+// ngFor <- reneder a list
