@@ -3,19 +3,16 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-test',
   template: `
-            <h2>
-                Welcome {{name}}
-            </h2>
-            <input #myInput type = "text">
-           <button (click)="logMessage(myInput.value)">Log</button>
-          <h2> This is passing the entire reference variable</h2>
-           <button (click)="logMessage(myInput)">Log</button>
+
+          <input [(ngModel)]="name" type ="text">
+          {{name}}
+
            `,
   styles: []
 })
 export class TestComponent implements OnInit {
 
-  public name = "Wesley";
+  public name = "";
 
   constructor() { }
 
@@ -35,5 +32,13 @@ export class TestComponent implements OnInit {
 
 
 
-// Template Reference variables. Add into the opentag #variableName
-// 
+// [] is property binding. data flow from class to template
+// () for event binding data flowfrom template to the clasee
+//this is two way binding
+// ngModel uses two way binding, and it needs to be imported in app module ts
+
+// From the input the data flows to the class proprety and from the class property flows back to the
+//template...
+
+// import { FormsModule } from '@angular/forms';
+// add to imports array too.. FormsModule
