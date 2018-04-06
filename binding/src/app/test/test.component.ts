@@ -2,42 +2,26 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-test',
-  // why doesnt ngIf need interpolations {{}} I'll read on this...
+  
   template: `
-       <!--   <h2 *ngIf="displayName; else elseBlock">
-            Wesley Studys
-          </h2>
+   
 
-          <ng-template #elseBlock>
-          <h2 >
-            Name is hidden
-          </h2>
-          </ng-template>
+          <div [ngSwitch]="color">
 
+            <div *ngSwitchCase="'red'">You picked red color</div>
+            <div *ngSwitchCase="'blue'">You picked blue color</div>
+            <div *ngSwitchCase="'green'">You picked green color</div>
 
-          <button (click) = "displayName = !displayName">
-          poop
-          </button>
-        -->
+            <div *ngSwitchDefault>Pick again </div>
 
-        <div *ngIf="displayName; then thenBlock; else elseBlock"></div>
-
-
-        <ng-template #thenBlock>
-          <h2> Wesley </h2>
-        </ng-template>
-
-
-        <ng-template #elseBlock>
-          <h2>Hidden</h2>
-        </ng-template>
+          </div>
 
            `,
   styles: []
 })
 export class TestComponent implements OnInit {
 
- public displayName = true;
+  public color= 'blue';
 
   constructor() { }
 
@@ -49,9 +33,9 @@ export class TestComponent implements OnInit {
 
 
 
-// Structural Direvtives
+// Structural Directives
 // Let you add or remove html elements from the DOM
 // ngIF < conditionally render html elements
-// ngSwitch <- conditionally
+// ngSwitch <- Switch statement
 
 // ngFor <- reneder a list
