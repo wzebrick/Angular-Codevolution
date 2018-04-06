@@ -5,23 +5,15 @@ import { Component, OnInit } from '@angular/core';
   
   template: `
    
-
-          <div [ngSwitch]="color">
-
-            <div *ngSwitchCase="'red'">You picked red color</div>
-            <div *ngSwitchCase="'blue'">You picked blue color</div>
-            <div *ngSwitchCase="'green'">You picked green color</div>
-
-            <div *ngSwitchDefault>Pick again </div>
-
+          <div *ngFor = "let color of colors; index as i; first as f ; last as l ; odd as o; even as e" >
+            <h2>{{i}}  {{f}} {{l}} {{o}} {{e}} {{color}}</h2>
           </div>
-
            `,
   styles: []
 })
 export class TestComponent implements OnInit {
 
-  public color= 'blue';
+  public colors = ["red", "blue","green","yellow"];
 
   constructor() { }
 
@@ -38,4 +30,4 @@ export class TestComponent implements OnInit {
 // ngIF < conditionally render html elements
 // ngSwitch <- Switch statement
 
-// ngFor <- reneder a list
+// ngFor <- reneder a list/ for loops. 
